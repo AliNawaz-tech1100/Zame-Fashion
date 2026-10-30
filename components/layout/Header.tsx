@@ -65,9 +65,9 @@ export function Header() {
             <button onClick={() => setSearchOpen(!searchOpen)} className="p-2 hover:bg-blush rounded-full transition-colors" aria-label="Search">
               <Search className="w-5 h-5 text-charcoal" />
             </button>
-            <Link href="/account/" className="hidden sm:flex p-2 hover:bg-blush rounded-full transition-colors" aria-label="Account">
+            {/* <Link href="/account/" className="hidden sm:flex p-2 hover:bg-blush rounded-full transition-colors" aria-label="Account">
               <User className="w-5 h-5 text-charcoal" />
-            </Link>
+            </Link> */}
             <Link href="/account/?tab=wishlist" className="relative p-2 hover:bg-blush rounded-full transition-colors" aria-label="Wishlist">
               <Heart className="w-5 h-5 text-charcoal" />
               {wishlistCount > 0 && (
@@ -98,9 +98,9 @@ export function Header() {
             <Link key={link.href} href={link.href} onClick={() => setMobileOpen(false)}
               className="block py-2.5 px-3 font-body text-sm text-warm-gray hover:text-charcoal hover:bg-blush rounded-lg transition-colors">{link.label}</Link>
           ))}
-          <Link href="/account/" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 py-2.5 px-3 font-body text-sm text-warm-gray hover:text-charcoal hover:bg-blush rounded-lg transition-colors">
+          {/* <Link href="/account/" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 py-2.5 px-3 font-body text-sm text-warm-gray hover:text-charcoal hover:bg-blush rounded-lg transition-colors">
             <User className="w-4 h-4" /> My Account
-          </Link>
+          </Link> */}
         </nav>
       </div>
     </header>
