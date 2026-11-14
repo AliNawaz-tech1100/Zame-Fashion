@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -43,8 +44,8 @@ export function Header() {
           </button>
 
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-full border-2 border-gold flex items-center justify-center bg-white">
-              <span className="font-display font-bold text-gold text-sm leading-none">ZM</span>
+            <div className="relative h-10 w-10 overflow-hidden rounded-full border border-gold/40 bg-white shadow-sm">
+              <Image src="/Logo.png" alt="ZAMÉ Fashion logo" fill className="object-contain p-1" priority />
             </div>
             <span className="font-display text-xl sm:text-2xl font-semibold text-charcoal tracking-tight">
               ZAM<span className="text-gold">É</span>

@@ -32,12 +32,12 @@ export const tokenClient: SanityClient = createClient({
 });
 
 /**
- * Client for the dedicated PRIVATE `orders` dataset.
- * Order documents contain customer PII and must never be readable anonymously.
+ * Client for order documents in the main storefront dataset.
+ * This keeps orders visible in the default Sanity Content workspace.
  */
 export const ordersClient: SanityClient = createClient({
   projectId,
-  dataset: process.env.SANITY_ORDERS_DATASET || "orders",
+  dataset: process.env.SANITY_ORDERS_DATASET || "production",
   apiVersion,
   useCdn: false,
   token: process.env.SANITY_API_WRITE_TOKEN || process.env.SANITY_API_READ_TOKEN || "",

@@ -67,23 +67,18 @@ order dashboard.
 
 ## 2. Where orders live (and how to see them in the Studio)
 
-Orders are saved to the **private `orders` dataset**, *not* to `production`. The Studio is
-configured with **two workspaces**:
+Orders are saved in the main `production` dataset so they appear in the standard Sanity
+Content workspace and in the storefront admin dashboard.
 
 | Workspace | Dataset | URL (local) | URL (deployed) |
 |---|---|---|---|
-| Store | `production` | `http://localhost:3333/storefront` | `https://95981i5a.sanity.studio/storefront` |
-| **Orders** | `orders` | `http://localhost:3333/orders` | `https://95981i5a.sanity.studio/orders` |
-
-So yes — **after you deploy the Studio (`npm run deploy`), new orders appear in the
-"ZAMÉ Fashion — Orders" workspace**. You must be logged in as a member of the Sanity project
-(the `orders` dataset is private; anonymous access is blocked).
+| Store + Orders | `production` | `http://localhost:3333/storefront` | `https://95981i5a.sanity.studio/storefront` |
 
 > The `/admin/orders` dashboard on the site remains the day-to-day way to manage orders
-> (status updates, payment status, notification retry). The Studio Orders workspace is a
-> read/write view of the raw documents.
+> (status updates, payment status, notification retry). The Studio "Orders" document type
+> is a raw view of the same data in the main production dataset.
 
-If the deployed Studio still shows only one workspace, redeploy it:
+If the deployed Studio still does not show your newly created order documents, redeploy it:
 ```bash
 cd studio-zame-fashion && npm run deploy
 ```

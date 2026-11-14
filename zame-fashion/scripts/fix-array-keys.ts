@@ -142,8 +142,7 @@ async function main() {
   console.log(`Fixing missing array keys in project ${projectId}${dryRun ? " (DRY RUN)" : ""}\n`);
 
   const targets = [
-    { dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production", types: ["product", "category", "collection"] },
-    { dataset: process.env.SANITY_ORDERS_DATASET || "orders", types: ["order"] },
+    { dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production", types: ["product", "category", "collection", "order"] },
   ];
 
   let totalPatched = 0;

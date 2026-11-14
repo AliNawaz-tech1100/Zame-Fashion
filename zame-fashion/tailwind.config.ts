@@ -21,6 +21,9 @@ const config: Config = {
         "soft-lavender": "#D4C4E0",
         "soft-mint": "#C8DDD4",
         "soft-yellow": "#F5E6A3",
+        "rosewood": "#C88B7B",
+        "ink": "#1F1A17",
+        "shell": "#FFFDFB",
       },
       fontFamily: {
         display: ["var(--font-playfair)", "serif"],

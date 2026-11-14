@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Instagram, Mail, Phone, MapPin, CreditCard, Truck, Shield, RotateCcw } from "lucide-react";
 
@@ -70,8 +71,8 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-2 sm:col-span-3 lg:col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-full border-2 border-gold flex items-center justify-center bg-white">
-                <span className="font-display font-bold text-gold text-sm">ZM</span>
+              <div className="relative h-10 w-10 overflow-hidden rounded-full border border-gold/40 bg-white shadow-sm">
+                <Image src="/Logo.png" alt="ZAMÉ Fashion logo" fill className="object-contain p-1" />
               </div>
               <span className="font-display text-2xl font-semibold tracking-tight">
                 ZAM<span className="text-gold">É</span>

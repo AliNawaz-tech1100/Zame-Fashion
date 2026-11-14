@@ -25,17 +25,24 @@ export const metadata: Metadata = {
   description:
     "Shop cute, pastel, feminine fashion accessories online in Pakistan. Hair clips, bows, keychains & more. 100% Imported. Launch Sale 50% Off!",
   keywords: ["fashion accessories", "hair clips", "bows", "keychains", "Pakistan", "cute accessories", "pastel", "Zame Fashion"],
+  icons: {
+    icon: "/Logo.png",
+    shortcut: "/Logo.png",
+    apple: "/Logo.png",
+  },
   openGraph: {
     title: "ZAMÉ Fashion | Premium Imported Accessories",
     description: "Shop cute, pastel, feminine fashion accessories online in Pakistan.",
     type: "website",
     locale: "en_PK",
     siteName: "ZAMÉ Fashion",
+    images: ["/Logo.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: "ZAMÉ Fashion | Premium Imported Accessories",
     description: "Shop cute, pastel, feminine fashion accessories online in Pakistan.",
+    images: ["/Logo.png"],
   },
   robots: {
     index: true,
