@@ -33,6 +33,16 @@ function isEmail(value: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
 }
 
+function normalizeOrderImage(value?: string): string {
+  if (!value) return "";
+
+  // Sanity asset refs are not valid URL strings to save into a free-form "image" field.
+  // A malformed asset ref looks like a 40-character hex hash and must be discarded.
+  if (/^https?:\/\//i.test(value)) return value;
+  if (/^[a-f0-9]{32,}$/i.test(value)) return "";
+  return value;
+}
+
 export function generateOrderNumber(): string {
   const now = new Date();
   const yy = String(now.getUTCFullYear()).slice(2);
@@ -246,22 +256,26 @@ export async function placeOrder(input: CreateOrderInput): Promise<PlaceOrderRes
       fieldErrors.items = `Only ${product.stock} left of "${product.name}". Please reduce the quantity.`;
       continue;
     }
+
+    const normalizedSize = item.size || product.sizes?.[0];
+    const normalizedColor = item.color || product.colors?.[0]?.name;
+
     if ((product.sizes?.length ?? 0) > 0) {
-      if (!item.size) {
+      if (!normalizedSize) {
         fieldErrors.items = `Please select a size for "${product.name}".`;
         continue;
       }
-      if (!product.sizes!.includes(item.size)) {
+      if (!product.sizes!.includes(normalizedSize)) {
         fieldErrors.items = `Selected size for "${product.name}" is unavailable.`;
         continue;
       }
     }
     if ((product.colors?.length ?? 0) > 0) {
-      if (!item.color) {
+      if (!normalizedColor) {
         fieldErrors.items = `Please select a color for "${product.name}".`;
         continue;
       }
-      if (!product.colors!.some((c) => c.name === item.color)) {
+      if (!product.colors!.some((c) => c.name === normalizedColor)) {
         fieldErrors.items = `Selected color for "${product.name}" is unavailable.`;
         continue;
       }
@@ -276,9 +290,9 @@ export async function placeOrder(input: CreateOrderInput): Promise<PlaceOrderRes
       productSlug: product.slug,
       productId: product.id,
       sku: product.sku,
-      image: product.images[0] || "",
-      size: item.size,
-      color: item.color,
+      image: normalizeOrderImage(product.images[0]),
+      size: normalizedSize,
+      color: normalizedColor,
       quantity: item.quantity,
       unitPrice,
       lineTotal,

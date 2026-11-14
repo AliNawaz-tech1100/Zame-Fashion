@@ -19,12 +19,15 @@ export const useCart = create<CartState>()(
     (set, get) => ({
       items: [],
       addItem: (product, quantity = 1, selectedSize, selectedColor) => {
+        const normalizedSize = selectedSize || product.sizes?.[0];
+        const normalizedColor = selectedColor || product.colors?.[0]?.name;
+
         set((state) => {
           const existing = state.items.find(
             (i) =>
               i.product.id === product.id &&
-              i.selectedSize === selectedSize &&
-              i.selectedColor === selectedColor
+              i.selectedSize === normalizedSize &&
+              i.selectedColor === normalizedColor
           );
           if (existing) {
             return {
@@ -34,7 +37,7 @@ export const useCart = create<CartState>()(
             };
           }
           return {
-            items: [...state.items, { product, quantity, selectedSize, selectedColor }],
+            items: [...state.items, { product, quantity, selectedSize: normalizedSize, selectedColor: normalizedColor }],
           };
         });
       },
