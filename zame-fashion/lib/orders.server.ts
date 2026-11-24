@@ -290,7 +290,7 @@ export async function placeOrder(input: CreateOrderInput): Promise<PlaceOrderRes
       productSlug: product.slug,
       productId: product.id,
       sku: product.sku,
-      image: normalizeOrderImage(product.images[0]),
+      image: normalizeOrderImage(product.images[0]) || product.name,
       size: normalizedSize,
       color: normalizedColor,
       quantity: item.quantity,

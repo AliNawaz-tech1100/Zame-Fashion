@@ -1,11 +1,12 @@
 /**
  * Repair: replace malformed order item images (bare Sanity asset refs like
- * `4c17734c4041acd9b380f80959e034ecf13eba6c`) with an empty string so
- * Sanity Studio stops crashing when rendering order documents.
+ * `4c17734c4041acd9b380f80959e034ecf13eba6c`) with the item's product name
+ * so Sanity Studio stops crashing and you can still tell which item an order
+ * contains when reviewing orders in the Studio.
  *
  * A real image URL starts with http(s)://. A bare 32+ character hex hash is
  * not a valid Sanity asset reference (which looks like
- * `image-<id>-<dims>-<ext>`), so it is discarded.
+ * `image-<id>-<dims>-<ext>`), so it is replaced with the product name.
  *
  * Usage:
  *   SANITY_API_WRITE_TOKEN=<token> npx tsx scripts/sanitize-order-images.ts [--dry-run]
@@ -60,11 +61,12 @@ function sanitizeOrder(doc: Record<string, unknown>): { patch: Record<string, un
     if (!item || typeof item !== "object") return item;
     const obj = item as Record<string, unknown>;
     const image = obj.image;
+    const productName = typeof obj.productName === "string" ? obj.productName : "";
     if (isValidImage(image)) return obj;
     if (MALFORMED_REF.test(String(image ?? ""))) {
       changed = true;
       count += 1;
-      return { ...obj, image: "" };
+      return { ...obj, image: productName || "" };
     }
     return obj;
   });
@@ -81,7 +83,7 @@ async function main() {
 
   let docs: Array<Record<string, unknown>>;
   try {
-    docs = await client.fetch<Record<string, unknown>[]>(`*[_type == "order"]{ _id, items { _key, image } }`);
+    docs = await client.fetch<Record<string, unknown>[]>(`*[_type == "order"]{ _id, items { _key, image, productName } }`);
   } catch (error) {
     console.error(`✗ could not read orders — ${error instanceof Error ? error.message : error}`);
     process.exit(1);
