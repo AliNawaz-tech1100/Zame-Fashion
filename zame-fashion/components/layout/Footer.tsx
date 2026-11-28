@@ -15,15 +15,15 @@ const footerLinks = {
   help: [
     { href: "/shipping-returns/", label: "Shipping & Delivery" },
     { href: "/shipping-returns/", label: "Returns & Exchanges" },
-    { href: "#", label: "Size Guide" },
-    { href: "#", label: "FAQs" },
-    { href: "#", label: "Contact Us" },
+    { href: "/shipping-returns/", label: "Size Guide" },
+    { href: "/blog/", label: "FAQs & Guides" },
+    { href: "/contact/", label: "Contact Us" },
   ],
   company: [
     { href: "/about/", label: "About Zame Fashion" },
     { href: "/about/", label: "Our Story" },
-    { href: "#", label: "Careers" },
-    { href: "#", label: "Press" },
+    { href: "/blog/", label: "Blog" },
+    { href: "/affiliate-disclosure/", label: "Affiliate Disclosure" },
   ],
   account: [
     { href: "/account/", label: "My Account" },
@@ -99,7 +99,7 @@ export function Footer() {
               <a href="https://instagram.com/zame_fashion" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold transition-colors" aria-label="Instagram">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="mailto:hello@zamefashion.com" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold transition-colors" aria-label="Email">
+              <a href="mailto:alinawazahad@gmail.com" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold transition-colors" aria-label="Email">
                 <Mail className="w-5 h-5" />
               </a>
             </div>
@@ -159,10 +159,13 @@ export function Footer() {
           <p className="font-body text-xs text-gray-500">
             © 2024 ZAMÉ Fashion. All rights reserved. Lahore, Pakistan.
           </p>
-          <div className="flex items-center gap-6">
-            <Link href="#" className="font-body text-xs text-gray-500 hover:text-gold transition-colors">Privacy Policy</Link>
-            <Link href="#" className="font-body text-xs text-gray-500 hover:text-gold transition-colors">Terms & Conditions</Link>
-            <Link href="#" className="font-body text-xs text-gray-500 hover:text-gold transition-colors">Cookie Policy</Link>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            <Link href="/privacy-policy/" className="font-body text-xs text-gray-500 hover:text-gold transition-colors">Privacy Policy</Link>
+            <Link href="/terms/" className="font-body text-xs text-gray-500 hover:text-gold transition-colors">Terms & Conditions</Link>
+            <Link href="/privacy-policy/" className="font-body text-xs text-gray-500 hover:text-gold transition-colors">Cookie Policy</Link>
+            <Link href="/affiliate-disclosure/" className="font-body text-xs text-gray-500 hover:text-gold transition-colors">Affiliate Disclosure</Link>
+            <Link href="/disclaimer/" className="font-body text-xs text-gray-500 hover:text-gold transition-colors">Disclaimer</Link>
+            <Link href="/blog/" className="font-body text-xs text-gray-500 hover:text-gold transition-colors">Blog</Link>
           </div>
         </div>
       </div>

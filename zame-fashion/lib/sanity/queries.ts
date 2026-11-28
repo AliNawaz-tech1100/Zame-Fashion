@@ -94,6 +94,7 @@ export const ordersQuery = /* groq */ `*[_type == "order"
   "customerName": customer.name,
   "customerPhone": customer.phone,
   "itemCount": count(items),
+  "itemNames": items[].productName,
   "notificationStatus": notification.status,
   _createdAt,
   _updatedAt

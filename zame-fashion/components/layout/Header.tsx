@@ -16,6 +16,7 @@ const navLinks = [
   { href: "/shop/?category=bows", label: "Bows" },
   { href: "/shop/?category=keychains", label: "Keychains" },
   { href: "/shop/?new=true", label: "New Arrivals" },
+  { href: "/blog/", label: "Blog" },
   { href: "/about/", label: "About" },
 ];
 

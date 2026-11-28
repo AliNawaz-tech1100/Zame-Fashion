@@ -164,7 +164,14 @@ export default async function AdminOrdersPage({
                       <p className="font-body text-sm text-charcoal">{order.customerName}</p>
                       <p className="font-body text-xs text-warm-gray">{order.customerPhone}</p>
                     </td>
-                    <td className="px-4 py-3 text-center font-body text-sm text-charcoal">{order.itemCount}</td>
+                    <td className="px-4 py-3 text-center font-body text-sm text-charcoal">
+                      <p className="text-center">{order.itemCount}</p>
+                      {order.itemNames?.length ? (
+                        <p className="mt-1 max-w-[220px] text-xs text-warm-gray text-center truncate" title={order.itemNames.join(" · ")}>
+                          {order.itemNames.join(" · ")}
+                        </p>
+                      ) : null}
+                    </td>
                     <td className="px-4 py-3 text-right font-body text-sm font-semibold text-charcoal whitespace-nowrap">{formatPrice(order.total)}</td>
                     <td className="px-4 py-3">
                       <span className={cn("inline-block px-2.5 py-1 rounded-pill font-body text-[11px] font-semibold capitalize", STATUS_STYLES[order.orderStatus] || "bg-gray-100 text-gray-600")}>

@@ -148,6 +148,7 @@ export interface AdminOrderListItem {
   customerName: string;
   customerPhone: string;
   itemCount: number;
+  itemNames?: string[];
   notificationStatus?: NotificationStatus;
   _createdAt: string;
   _updatedAt: string;
